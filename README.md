@@ -1,6 +1,8 @@
 <h1 align="center">
   <br>
-  Phaser 3 TypeScript Starter Template
+  <a href="https://github.com/tfkfan/phaser3-react-template#readme"><img src="readme/header.png" alt="header" width="600"></a>
+  <br>
+  Phaser 3 React TypeScript Starter Template
   <br>
 </h1>
 
@@ -17,16 +19,9 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
   <a href="#key-features">Key Features</a> •
   <a href="#preview">Preview</a> •
   <a href="#how-to-use">How To Use</a> •
-  <a href="#enable3d">enable3d</a> •
-  <a href="#progressive-web-app-pwa">PWA</a> •
-  <a href="#native-app">Native App</a> •
-  <a href="#custom-configurations">Custom Configurations</a> •
-  <a href="#es6">ES6</a> •
-  <a href="#useful-links">Useful Links</a> •
-  <a href="#multiplayer-game">Multiplayer Game</a> •
-  <a href="#examples">Examples</a> •
-  <a href="#credits">Credits</a> •
-  <a href="#license">License</a>
+  <a href="#react-controls">React controls</a> •
+  <a href="#websocket-support">Websocket support</a> •
+  <a href="#credits">Credits</a>
 </p>
 
 ---
