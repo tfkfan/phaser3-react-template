@@ -5,15 +5,10 @@ export default class BootstrapScene extends Phaser.Scene {
 
     preload() {
         this.load.image('phaser-logo', 'assets/phaser-logo.png')
-
     }
 
     create() {
-        this.scene.start("game")
-    }
-
-    launchGame() {
-        this.scene.start('bootstrap')
+        this.scene.start('game')
     }
 
 }

@@ -3,10 +3,10 @@ import React from 'react';
 import {useAppSelector} from "./hooks";
 import Routes from "./routes";
 import game from "./phaser-game"
-import BootstrapScene from "./scenes/bootstrap.scene";
+
 window.addEventListener('load', () => {
-    const bootstrap = game.scene.keys.bootstrap as BootstrapScene
-    bootstrap.launchGame()
+      game.scene.start("bootstrap")
+
 })
 
 export const App = () => {
