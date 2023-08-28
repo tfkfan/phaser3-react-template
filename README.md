@@ -43,7 +43,7 @@ A starter template for <a href="https://phaser.io/" target="_blank" >Phaser 3</a
 
 ## Preview
 
-This is what you get after installing this template. A simple and clean starter template written in TypeScript. [Try it!](https://s3.eu-central-1.amazonaws.com/phaser3-typescript/starter-template/index.html)
+This is what you get after installing this template. A simple and clean starter template written in TypeScript. 
 
 <img src="readme/build.png" width="640" style='border: 0.25em solid #e1e4e8;border-radius: 5px;'/>
 
