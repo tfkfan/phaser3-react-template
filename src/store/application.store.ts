@@ -4,7 +4,7 @@ import {Page} from "../config/constants";
 const applicationSlice = createSlice({
     name: 'application',
     initialState: {
-        currentPage: Page.LOGIN,
+        currentPage: Page.GAME,
     },
     reducers: {
         setCurrentPage(state, action: PayloadAction<Page>) {

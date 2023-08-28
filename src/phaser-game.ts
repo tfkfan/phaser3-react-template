@@ -20,8 +20,13 @@ const config = {
   }
 }
 
+
 const phaserGame = new Phaser.Game(config)
 
 ;(window as any).game = phaserGame
+
+
+
+
 
 export default phaserGame
