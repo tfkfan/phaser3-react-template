@@ -1,6 +1,6 @@
 {
   "name": "phaser3-react-template",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Phaser 3 starter template with TypeScript , webpack, react, reduxjs and websocket.",
   "homepage": "https://github.com/tfkfan/phaser3-react-template#readme",
   "author": {
