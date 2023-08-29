@@ -117,14 +117,9 @@ CONTROLS.setVersion(`Phaser v${Phaser.VERSION}`)
 Use Network class to communicate with ws server:
 
 ```typescript
+network.on(MessageType.UPDATE, data => {
 
-this.socket.addEventListener('message', (evt) => {
-  const eventData = JSON.parse(evt.data);
-  // create your own additional event handlers depending on 'type' field inside data json
-  if (eventData.type === MessageType.UPDATE && this.events.UPDATE_HANDLER) {
-    this.events.UPDATE_HANDLER(eventData.data)
-  }
-});
+})
 ```
 
 ```typescript

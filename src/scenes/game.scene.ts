@@ -7,7 +7,7 @@ export default class GameScene extends Phaser.Scene {
     constructor() {
         super('game')
         // Use this update handler to update game state coming from websocket
-        network.onUpdate((data) => {
+        network.on(MessageType.UPDATE,(data) => {
 
         })
     }
