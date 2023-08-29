@@ -119,7 +119,7 @@ Use Network class to communicate with ws server:
 ```typescript
 network.on(MessageType.UPDATE, data => {
 
-}, <this arg>)
+}, this)
 ```
 
 ```typescript
