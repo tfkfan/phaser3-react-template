@@ -4,12 +4,13 @@ export enum MessageType {
     PLAYER_MOUSE_DOWN = 202,
     PLAYER_MOUSE_MOVE = 203
 }
+
 export type OnMessageHandler = (eventData: any) => void;
 
 
 class Network {
     private socket: any;
-    private events: Map<number, OnMessageHandler> = new Map<number, OnMessageHandler>()
+    private events: Map<number, [any, OnMessageHandler]> = new Map<number, [any, OnMessageHandler]>()
 
     constructor() {
         if (!window.WebSocket) {
@@ -36,13 +37,15 @@ class Network {
 
         this.socket.addEventListener('message', (evt) => {
             const eventData = JSON.parse(evt.data);
-            if(this.events.has(eventData.type))
-                this.events.get(eventData.type).call(this,eventData.data);
+            if (this.events.has(eventData.type)) {
+                const arr = this.events.get(eventData.type)
+                arr[1].call(arr[0], eventData.data);
+            }
         });
     }
 
-    public on(type:number, handler:OnMessageHandler){
-        this.events.set(type, handler);
+    public on(type: number, handler: OnMessageHandler, thisArg:any) {
+        this.events.set(type, [thisArg, handler]);
     }
 
     public send(type: number, data: any = null) {
