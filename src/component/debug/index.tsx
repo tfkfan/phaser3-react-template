@@ -13,7 +13,10 @@ import {CONTROLS} from "../../controls";
 
     return (
         <>
-            <div>
+            <div style={{
+                pointerEvents: 'none',
+                userSelect: 'none'
+            }}>
                 <span >
                     Fps: {fps}
                 </span>
