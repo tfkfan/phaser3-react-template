@@ -1,26 +1,35 @@
-import {ReactControls, ValueSetter, WidgetControl} from "./react-controls";
+import {checkExists} from "./utils";
 
-interface GameDebugControls extends WidgetControl {
+export type ValueSetter<T> = (T) => void;
+
+//Create your own react controls interface
+interface GameDebugControls {
     setVersion: ValueSetter<string>
     setFps: ValueSetter<number>
 }
 
-const GAME_DEBUG_CONTROL_KEY = "GAME_DEBUG_CONTROL_KEY"
+//Add your own react controls
+interface GameControlsMap {
+    debug?: GameDebugControls
+}
 
-class GameControls extends ReactControls {
+class GameControls {
+    private controls: GameControlsMap = {}
 
     // Create your own register controls method
     public registerGameDebugControls(controls: GameDebugControls) {
-        this.register(GAME_DEBUG_CONTROL_KEY, controls)
+        this.controls.debug = controls
     }
 
     // Create your own valueSetter method
     public setFps(fps: number) {
-        (this.getControl(GAME_DEBUG_CONTROL_KEY) as GameDebugControls).setFps(fps)
+        if (checkExists(this.controls.debug))
+            this.controls.debug.setFps(fps)
     }
 
     public setVersion(version: string) {
-        (this.getControl(GAME_DEBUG_CONTROL_KEY) as GameDebugControls).setVersion(version)
+        if (checkExists(this.controls.debug))
+            this.controls.debug.setVersion(version)
     }
 }
 
