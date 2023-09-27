@@ -73,9 +73,6 @@ To use this take a look to /src/controls.ts and /src/react-controls.ts file to c
 To register new handler:
 ```typescript
 
-const GAME_DEBUG_CONTROL_KEY = "GAME_DEBUG_CONTROL_KEY"
-
-
 class GameControls {
     private controls: GameControlsMap = {}
 
