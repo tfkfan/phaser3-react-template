@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import store from './store';
 import {loadIcons} from './config/icon-loader';
 import App from "./app";
-import  "./react-controls";
+import  "./controls";
 loadIcons();
 
 const rootEl = document.getElementById('root');

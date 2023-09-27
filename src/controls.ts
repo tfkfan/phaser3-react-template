@@ -2,13 +2,13 @@ import {checkExists} from "./utils";
 
 export type ValueSetter<T> = (T) => void;
 
-//Create your own react controls interface
+// Create your own react controls interface
 interface GameDebugControls {
     setVersion: ValueSetter<string>
     setFps: ValueSetter<number>
 }
 
-//Add your own react controls
+// Add your own react controls
 interface GameControlsMap {
     debug?: GameDebugControls
 }
