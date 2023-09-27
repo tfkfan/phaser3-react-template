@@ -68,7 +68,7 @@ $ npm run build
 
 This template allows to use react hooks outside of react components
 
-To use this take a look to /src/controls.ts and /src/react-controls.ts file to create your own handlers
+To use this take a look to /src/controls.ts  file to create your own handlers
 
 To register new handler:
 ```typescript
