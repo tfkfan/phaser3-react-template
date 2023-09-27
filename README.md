@@ -75,35 +75,25 @@ To register new handler:
 
 const GAME_DEBUG_CONTROL_KEY = "GAME_DEBUG_CONTROL_KEY"
 
-class GameControls extends ReactControls {
 
-  // Create your own register controls method
-  public registerGameDebugControls(controls: GameDebugControls) {
-    this.register(GAME_DEBUG_CONTROL_KEY, controls, this.onGameDebugEvent)
-  }
+class GameControls {
+    private controls: GameControlsMap = {}
 
-  private onGameDebugEvent(event:GameDebugEvent, control:GameDebugControls){
-    if (checkExists(event.fps))
-      control.setFps(event.fps)
-    if (checkExists(event.version)) {
-      control.setVersion(event.version)
+    // Create your own register controls method
+    public registerGameDebugControls(controls: GameDebugControls) {
+        this.controls.debug = controls
     }
-  }
 
-  // Create your own valueSetter method
-  public setFps(fps: number) {
-    this.processEvent(GAME_DEBUG_CONTROL_KEY, {fps})
-            .then(data => {
-              this.onGameDebugEvent(data[1],data[0] as GameDebugControls)
-            })
-  }
+    // Create your own valueSetter method
+    public setFps(fps: number) {
+        if (checkExists(this.controls.debug))
+            this.controls.debug.setFps(fps)
+    }
 
-  public setVersion(version: string) {
-    this.processEvent(GAME_DEBUG_CONTROL_KEY, {version})
-            .then(data => {
-              this.onGameDebugEvent(data[1],data[0] as GameDebugControls)
-            })
-  }
+    public setVersion(version: string) {
+        if (checkExists(this.controls.debug))
+            this.controls.debug.setVersion(version)
+    }
 }
 ```
 
