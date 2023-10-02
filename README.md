@@ -105,7 +105,7 @@ Use Network class to communicate with ws server...
 
 First, initialize websocket to communicate with specific server host:
 
-```
+```typescript
 network.initConnection("<your ws host>")
 ```
 
