@@ -101,7 +101,15 @@ CONTROLS.setVersion(`Phaser v${Phaser.VERSION}`)
 ```
 ## Websocket support
 
-Use Network class to communicate with ws server:
+Use Network class to communicate with ws server...
+
+First, initialize websocket to communicate with specific server host:
+
+```
+network.initConnection("<your ws host>")
+```
+
+Then use functionality directly:
 
 ```typescript
 network.on(MessageType.UPDATE, data => {
