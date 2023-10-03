@@ -3,7 +3,6 @@ export type OnMessageHandler = (eventData: any) => void;
 export default class Network {
     private socket: any;
     private events: Map<number, [any, OnMessageHandler]> = new Map<number, [any, OnMessageHandler]>()
-    private socketReady: boolean;
 
     constructor() {
         if (!window.WebSocket) {
@@ -44,10 +43,6 @@ export default class Network {
 
     public on(type: number, handler: OnMessageHandler, thisArg: any = null) {
         this.events.set(type, [thisArg, handler]);
-    }
-
-    public isSocketReady() {
-        return this.socketReady;
     }
 
     public send(type: number, data: any = null) {
