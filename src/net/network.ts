@@ -1,5 +1,9 @@
 export type OnMessageHandler = (eventData: any) => void;
 
+export const MessageType = {
+    UPDATE: 1,
+    PLAYER_MOUSE_MOVE: 2
+}
 export default class Network {
     private socket: any;
     private events: Map<number, [any, OnMessageHandler]> = new Map<number, [any, OnMessageHandler]>()
