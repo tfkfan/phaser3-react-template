@@ -1,14 +1,15 @@
-import { MessageType, network } from '../net/network';
+import { MessageType, webSocket } from '../net/game-web-socket';
 import { useGlobalState } from '../global-state';
 import PhaserLogo from '../actors/phaserLogo';
 import Vector2 = Phaser.Math.Vector2;
 
 export default class GameScene extends Phaser.Scene {
   private counter: number;
+
   constructor() {
     super('game');
     // Use this update handler to update game state coming from websocket
-    network.on(MessageType.UPDATE, data => {}, this);
+    webSocket.on(MessageType.UPDATE, data => {}, this);
     this.counter = 0;
   }
 
@@ -16,7 +17,7 @@ export default class GameScene extends Phaser.Scene {
     useGlobalState(state => state.setVersion(`Phaser v${Phaser.VERSION}`));
     this.input.on('pointermove', evt => {
       const evtPoint = new Vector2(evt.worldX, evt.worldY);
-      network.send(MessageType.PLAYER_MOUSE_MOVE, { evtPoint });
+      webSocket.send(MessageType.PLAYER_MOUSE_MOVE, { evtPoint });
     });
 
     new PhaserLogo(this, this.cameras.main.width / 2, 0);

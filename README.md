@@ -88,24 +88,24 @@ useGlobalState(state => state.setVersion(`Phaser v${Phaser.VERSION}`));
 ```
 ## Websocket support
 
-Use Network class to communicate with ws server...
+Use GameWebSocket class to communicate with ws server...
 
 First, initialize websocket to communicate with specific server host:
 
 ```typescript
-network.initConnection("<your ws host>")
+webSocket.initConnection("<your ws host>")
 ```
 
 Then use functionality directly:
 
 ```typescript
-network.on(MessageType.UPDATE, data => {
+webSocket.on(MessageType.UPDATE, data => {
 
 }, this)
 ```
 
 ```typescript
-network.send(MessageType.PLAYER_KEY_DOWN, {inputId: 'RIGHT', state: false});
+webSocket.send(MessageType.PLAYER_KEY_DOWN, {inputId: 'RIGHT', state: false});
 ```
 
 ## Credits
