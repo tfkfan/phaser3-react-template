@@ -1,15 +1,16 @@
 import React, {useState} from 'react';
 import 'phaser'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {CONTROLS} from "../../controls";
+import { useGlobalReg } from '../../global-state';
 
  const DebugPanel = () => {
     const [fps, setFps] = useState(0);
     const [version, setVersion] = useState('');
-    CONTROLS.registerGameDebugControls({
-        setVersion,
-        setFps
-    })
+
+    useGlobalReg({
+      setVersion,
+      setFps
+    });
 
     return (
         <>

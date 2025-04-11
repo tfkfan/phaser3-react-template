@@ -68,36 +68,23 @@ $ npm run build
 
 This template allows to use react hooks outside of react components
 
-To use this take a look to /src/controls.ts  file to create your own handlers
+To use this take a look to /src/global-state.ts  file to create your own handlers
 
-To register new handler:
+To register new handler write inside your React functional component:
 ```typescript
+const [fps, setFps] = useState(0);
+const [version, setVersion] = useState('');
 
-class GameControls {
-    private controls: GameControlsMap = {}
-
-    // Create your own register controls method
-    public registerGameDebugControls(controls: GameDebugControls) {
-        this.controls.debug = controls
-    }
-
-    // Create your own valueSetter method
-    public setFps(fps: number) {
-        if (checkExists(this.controls.debug))
-            this.controls.debug.setFps(fps)
-    }
-
-    public setVersion(version: string) {
-        if (checkExists(this.controls.debug))
-            this.controls.debug.setVersion(version)
-    }
-}
+useGlobalReg({
+  setVersion,
+  setFps
+});
 ```
 
 To use it inside phaser game:
 
 ```typescript
-CONTROLS.setVersion(`Phaser v${Phaser.VERSION}`)
+useGlobalState(state => state.setVersion(`Phaser v${Phaser.VERSION}`));
 ```
 ## Websocket support
 

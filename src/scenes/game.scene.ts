@@ -1,37 +1,34 @@
-import {network, MessageType} from "../net/network";
-import {CONTROLS} from "../controls";
-import PhaserLogo from "../actors/phaserLogo";
+import { MessageType, network } from '../net/network';
+import {  useGlobalState } from '../global-state';
+import PhaserLogo from '../actors/phaserLogo';
 import Vector2 = Phaser.Math.Vector2;
 
 export default class GameScene extends Phaser.Scene {
-    constructor() {
-        super('game')
-        // Use this update handler to update game state coming from websocket
-        network.on(MessageType.UPDATE, (data) => {
+  constructor() {
+    super('game');
+    // Use this update handler to update game state coming from websocket
+    network.on(MessageType.UPDATE, data => {}, this);
+  }
 
-        }, this)
-    }
+  create() {
+    useGlobalState(state => state.setVersion(`Phaser v${Phaser.VERSION}`));
+    this.input.on('pointermove', evt => {
+      const evtPoint = new Vector2(evt.worldX, evt.worldY);
+      network.send(MessageType.PLAYER_MOUSE_MOVE, { evtPoint });
+    });
 
-    create() {
-        CONTROLS.setVersion(`Phaser v${Phaser.VERSION}`)
+    new PhaserLogo(this, this.cameras.main.width / 2, 0);
 
-        this.input.on('pointermove', (evt) => {
-            const evtPoint = new Vector2(evt.worldX, evt.worldY);
-            network.send(MessageType.PLAYER_MOUSE_MOVE, {evtPoint})
-        });
+    // display the Phaser.VERSION
+    this.add
+      .text(this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`, {
+        color: '#000000',
+        fontSize: '24px',
+      })
+      .setOrigin(1, 0);
+  }
 
-        new PhaserLogo(this, this.cameras.main.width / 2, 0)
-
-        // display the Phaser.VERSION
-        this.add
-            .text(this.cameras.main.width - 15, 15, `Phaser v${Phaser.VERSION}`, {
-                color: '#000000',
-                fontSize: '24px'
-            })
-            .setOrigin(1, 0)
-    }
-
-    update() {
-        CONTROLS.setFps(Math.trunc(this.sys.game.loop.actualFps));
-    }
+  update() {
+    useGlobalState(state => state.setFps(Math.trunc(this.sys.game.loop.actualFps)));
+  }
 }
