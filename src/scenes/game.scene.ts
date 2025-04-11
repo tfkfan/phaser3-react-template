@@ -1,13 +1,15 @@
 import { MessageType, network } from '../net/network';
-import {  useGlobalState } from '../global-state';
+import { useGlobalState } from '../global-state';
 import PhaserLogo from '../actors/phaserLogo';
 import Vector2 = Phaser.Math.Vector2;
 
 export default class GameScene extends Phaser.Scene {
+  private counter: number;
   constructor() {
     super('game');
     // Use this update handler to update game state coming from websocket
     network.on(MessageType.UPDATE, data => {}, this);
+    this.counter = 0;
   }
 
   create() {
@@ -30,5 +32,7 @@ export default class GameScene extends Phaser.Scene {
 
   update() {
     useGlobalState(state => state.setFps(Math.trunc(this.sys.game.loop.actualFps)));
+    useGlobalState(state => state.setCounter(this.counter));
+    this.counter++;
   }
 }
