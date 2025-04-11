@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'phaser';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useGlobalReg } from '../../global-state';
+import { useGlobalReg } from '../../hooks';
 
 const DebugPanel = () => {
   const [fps, setFps] = useState(0);
@@ -11,7 +11,7 @@ const DebugPanel = () => {
   useGlobalReg({
     setVersion,
     setFps,
-    setCounter
+    setCounter,
   });
 
   return (

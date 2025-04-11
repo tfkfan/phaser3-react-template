@@ -1,5 +1,5 @@
 import { MessageType, webSocket } from '../net/game-web-socket';
-import { useGlobalState } from '../global-state';
+import { useGlobalState } from '../hooks';
 import PhaserLogo from '../actors/phaserLogo';
 import Vector2 = Phaser.Math.Vector2;
 
